@@ -3,7 +3,6 @@
  * I have developed plugins on Atlassian Markets
  * I also the maintainer a Ecomemerce website which was my capstone project in university with my other 2 friends.
  * We built this with the hope of support small to medium bussiness to have a free tool to manage their business
- *
  * I am passionate about web development and especially building robust backend and beautiful interface.
  * As the rise of AI, I am currently pursue a master degree in CS (focus on AI) at Univerisity Of Windsor.
  */
@@ -15,7 +14,7 @@ export default function () {
     <Space
       direction="vertical"
       style={{
-        margin: `0 100px`
+        margin: `0 100px`,
       }}
     >
       <h1>Hai Ly</h1>

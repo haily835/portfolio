@@ -3,6 +3,7 @@ import { createUseStyles } from "react-jss";
 
 interface NavigationBarProps {
   selected: string;
+  setCurrentPage: (currentPage: string) => void;
 }
 
 const useStyles = createUseStyles({
@@ -10,24 +11,48 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-around",
-    padding: 30
+    padding: 30,
   },
   selected: {
     fontWeight: "bold",
-    textDecoration: "underline"
-  }
+    textDecoration: "underline",
+  },
 });
 
-export default function ({ selected }: NavigationBarProps) {
+export default function ({ selected, setCurrentPage }: NavigationBarProps) {
   const classes = useStyles();
   return (
     <div className={classes.navContainer}>
-      <div className={selected === "home" ? classes.selected : ""}>Home</div>
-      <div className={selected === "info" ? classes.selected : ""}>Info</div>
-      <div className={selected === "projects" ? classes.selected : ""}>
+      <div
+        className={selected === "home" ? classes.selected : ""}
+        onClick={() => {
+          setCurrentPage("home");
+        }}
+      >
+        Home
+      </div>
+      <div
+        className={selected === "info" ? classes.selected : ""}
+        onClick={() => {
+          setCurrentPage("info");
+        }}
+      >
+        Info
+      </div>
+      <div
+        className={selected === "projects" ? classes.selected : ""}
+        onClick={() => {
+          setCurrentPage("projects");
+        }}
+      >
         Projects
       </div>
-      <div className={selected === "contact-me" ? classes.selected : ""}>
+      <div
+        className={selected === "contact-me" ? classes.selected : ""}
+        onClick={() => {
+          setCurrentPage("contact-me");
+        }}
+      >
         Contact me
       </div>
     </div>

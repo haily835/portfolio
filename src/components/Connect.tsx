@@ -3,17 +3,17 @@ import {
   GithubOutlined,
   LinkedinOutlined,
   FacebookOutlined,
-  TwitterOutlined
+  TwitterOutlined,
 } from "@ant-design/icons";
 import { Space } from "antd";
 
 export default function () {
   return (
     <Space size="large">
-      <GithubOutlined style={{ fontSize: 20 }} />
-      <LinkedinOutlined style={{ fontSize: 20 }} />
-      <FacebookOutlined style={{ fontSize: 20 }} />
-      <TwitterOutlined style={{ fontSize: 20 }} />
+      <GithubOutlined style={{ fontSize: 20 }} rev="" />
+      <LinkedinOutlined style={{ fontSize: 20 }} rev="" />
+      <FacebookOutlined style={{ fontSize: 20 }} rev="" />
+      <TwitterOutlined style={{ fontSize: 20 }} rev="" />
     </Space>
   );
 }
