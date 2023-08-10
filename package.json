@@ -5,6 +5,7 @@
   "keywords": [],
   "main": "src/index.tsx",
   "dependencies": {
+    "@ant-design/icons": "^5.2.5",
     "antd": "5.8.2",
     "csbbust": "1.0.1",
     "loader-utils": "3.2.1",

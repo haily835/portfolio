@@ -1,27 +1,40 @@
 import "./styles.css";
 import { useState } from "react";
 import NavigationBar from "./components/NavigationBar";
-import Home from "./pages/Home";
-import Info from "./pages/Info";
+
+import About from "./pages/About";
 import Connect from "./components/Connect";
+import Experiences from "./pages/Experiences";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
-export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+import Footer from "./components/Footer";
 
-  const renderContent = () => {
-    switch (currentPage) {
-      case "home":
-        return <Home />;
-      case "info":
-        return <Info />;
-      case "projects":
-        return <Projects />;
-      case "contact-me":
-        return <Contact />;
-    }
-    return "";
-  };
+const navItems = [
+  {
+    title: "About me",
+    key: "about",
+    content: <About />,
+  },
+  {
+    title: "Experiences",
+    key: "experience",
+    content: <Experiences />,
+  },
+  {
+    title: "Projects",
+    key: "projects",
+    content: <Projects />,
+  },
+  // {
+  //   title: "Notes",
+  //   key: "notes",
+  //   content: <Notes />,
+  // },
+];
+export default function App() {
+  const [currentPage, setCurrentPage] = useState("about");
+
+
   return (
     <div
       className="App"
@@ -30,19 +43,25 @@ export default function App() {
         backgroundColor: "#FFF6DC",
         display: "flex",
         flexDirection: "column",
+        minHeight: "100vh",
       }}
     >
       <div>
-        <NavigationBar selected={currentPage} setCurrentPage={setCurrentPage} />
+        <NavigationBar navItems={navItems.map(item => ({ title: item.title, key: item.key }))} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
 
-      <div>
-        <Connect />
+      <div
+        style={{
+          display: "flex",
+          flex: 1,
+          justifyContent: "center",
+          marginTop: 82,
+        }}
+      >
+        {navItems.find(item => item.key === currentPage)?.content}
       </div>
 
-      <div style={{ display: "flex", flex: 1, justifyContent: "center" }}>
-        {renderContent()}
-      </div>
+      <Footer />
     </div>
   );
 }

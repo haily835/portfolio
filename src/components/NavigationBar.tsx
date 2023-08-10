@@ -1,8 +1,14 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { Typography } from "antd";
+const { Text } = Typography;
 
 interface NavigationBarProps {
-  selected: string;
+  navItems: {
+    title: string;
+    key: string;
+  }[];
+  currentPage: string;
   setCurrentPage: (currentPage: string) => void;
 }
 
@@ -12,6 +18,12 @@ const useStyles = createUseStyles({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 30,
+    backgroundColor: "#C4C1A4D9",
+    position: "fixed",
+    width: "100vw",
+  },
+  navItem: {
+    cursor: "pointer",
   },
   selected: {
     fontWeight: "bold",
@@ -19,42 +31,22 @@ const useStyles = createUseStyles({
   },
 });
 
-export default function ({ selected, setCurrentPage }: NavigationBarProps) {
+export default function ({ currentPage, setCurrentPage, navItems }: NavigationBarProps) {
   const classes = useStyles();
   return (
     <div className={classes.navContainer}>
-      <div
-        className={selected === "home" ? classes.selected : ""}
-        onClick={() => {
-          setCurrentPage("home");
-        }}
-      >
-        Home
-      </div>
-      <div
-        className={selected === "info" ? classes.selected : ""}
-        onClick={() => {
-          setCurrentPage("info");
-        }}
-      >
-        Info
-      </div>
-      <div
-        className={selected === "projects" ? classes.selected : ""}
-        onClick={() => {
-          setCurrentPage("projects");
-        }}
-      >
-        Projects
-      </div>
-      <div
-        className={selected === "contact-me" ? classes.selected : ""}
-        onClick={() => {
-          setCurrentPage("contact-me");
-        }}
-      >
-        Contact me
-      </div>
+      {
+        navItems.map((item) => <div
+          className={
+            currentPage === item.key
+              ? `${classes.selected} ${classes.navItem}`
+              : classes.navItem
+          }
+          onClick={() => { setCurrentPage(item.key); }}
+        >
+          <Text>{item.title}</Text>
+        </div>)
+      }
     </div>
   );
 }
