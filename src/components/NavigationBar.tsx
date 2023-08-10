@@ -1,5 +1,7 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
+import { Typography } from "antd";
+const { Text } = Typography;
 
 interface NavigationBarProps {
   selected: string;
@@ -12,6 +14,12 @@ const useStyles = createUseStyles({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 30,
+    backgroundColor: "#C4C1A4",
+    position: "fixed",
+    width: "100vw",
+  },
+  navItem: {
+    cursor: "pointer",
   },
   selected: {
     fontWeight: "bold",
@@ -24,36 +32,55 @@ export default function ({ selected, setCurrentPage }: NavigationBarProps) {
   return (
     <div className={classes.navContainer}>
       <div
-        className={selected === "home" ? classes.selected : ""}
+        className={
+          selected === "home"
+            ? `${classes.selected} ${classes.navItem}`
+            : classes.navItem
+        }
         onClick={() => {
           setCurrentPage("home");
         }}
       >
-        Home
+        <Text>About</Text>
       </div>
+
       <div
-        className={selected === "info" ? classes.selected : ""}
-        onClick={() => {
-          setCurrentPage("info");
-        }}
-      >
-        Info
-      </div>
-      <div
-        className={selected === "projects" ? classes.selected : ""}
+        className={
+          selected === "projects"
+            ? `${classes.selected} ${classes.navItem}`
+            : classes.navItem
+        }
         onClick={() => {
           setCurrentPage("projects");
         }}
       >
-        Projects
+        <Text>Experience</Text>
       </div>
+
       <div
-        className={selected === "contact-me" ? classes.selected : ""}
+        className={
+          selected === "projects"
+            ? `${classes.selected} ${classes.navItem}`
+            : classes.navItem
+        }
+        onClick={() => {
+          setCurrentPage("projects");
+        }}
+      >
+        <Text>Projects</Text>
+      </div>
+
+      <div
+        className={
+          selected === "contact-me"
+            ? `${classes.selected} ${classes.navItem}`
+            : classes.navItem
+        }
         onClick={() => {
           setCurrentPage("contact-me");
         }}
       >
-        Contact me
+        <Text>Notes</Text>
       </div>
     </div>
   );

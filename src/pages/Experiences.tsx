@@ -3,27 +3,23 @@ import { Space, Divider, Typography } from "antd";
 import ExperienceCard from "../components/ExperienceCard";
 const { Title } = Typography;
 
-const projects = [
+const experiences = [
   {
-    companyName: "Retail management website",
+    companyName: "Speranza Inc",
     start: "Jul 2021",
     end: "Oct 2021",
-    role: "ReactJs (Front-end), Laravel (Back-end)",
+    role: "Engineering Intern",
     descriptions: [
-      "A web application from my graduation thesis aims at small to medium businesses.",
-      "Responsible for building the frontend, backend and deployment to a VPS",
-      "Backend: https://github.com/haily835/bkrm-api",
-      "Frontend: https://github.com/ledang1234/bkrm_web",
+      "Kiosk application for patients and staff to interact with smart lockers. Join in building the UI using Windows Forms (.Net framework)",
     ],
   },
   {
-    companyName: "Food Court website: ReactJs, MongoDB",
+    companyName: "DevSamurai Vietnam",
     start: "Nov 2021",
     end: "April 2022",
-    role: "",
+    role: "Engineering Intern",
     descriptions: [
-      "Simple website for customers to order foods",
-      "https://github.com/haily835/foodcourt",
+      "Leanboard plugin on Jira and Confluence (Atlassian Market). Responsible for maintenance and adding new features",
     ],
   },
   {
@@ -44,12 +40,29 @@ export default function () {
     <Space
       direction="vertical"
       style={{
-        margin: `30px 100px`,
+        margin: `0 100px`,
         textAlign: "left",
       }}
     >
+      <Divider orientation="left" orientationMargin="0">
+        <Title>Experiences</Title>
+      </Divider>
       <div>
-        {projects.map((e) => (
+        {experiences.map((e) => (
+          <>
+            <ExperienceCard
+              companyName={e.companyName}
+              start={e.start}
+              end={e.end}
+              role={e.role}
+              descriptions={e.descriptions}
+            />
+            <Divider />
+          </>
+        ))}
+      </div>
+      <div>
+        {experiences.map((e) => (
           <>
             <ExperienceCard
               companyName={e.companyName}
