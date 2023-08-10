@@ -18,7 +18,27 @@ export default function () {
         margin: `0 100px`,
       }}
     >
-      <Title>Hai Ly</Title>
+      <Title>Hello, my name is Hai Ly</Title>
+      <Paragraph>
+        I'm Vietnamese and a fullstack developer based in Windsor, Canada.
+      </Paragraph>
+
+      <Paragraph>
+        Currently, I'm pursueing a master degree in Computer Science at
+        University Of Windsor.
+      </Paragraph>
+
+
+      <div>
+        <img
+          alt="avata"
+          src="../assets/avata.jpeg"
+          height="400"
+          style={{
+            borderRadius: "50%"
+          }}
+        />
+      </div>
       <Paragraph>
         After graduating from university, I started my career as a fullstack
         developer. I developed plugins on Atlassian Markets which support Jira

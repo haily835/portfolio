@@ -40,27 +40,11 @@ export default function () {
     <Space
       direction="vertical"
       style={{
-        margin: `0 100px`,
+        margin: `30px 100px`,
         textAlign: "left",
       }}
     >
-      <Divider orientation="left" orientationMargin="0">
-        <Title>Experiences</Title>
-      </Divider>
-      <div>
-        {experiences.map((e) => (
-          <>
-            <ExperienceCard
-              companyName={e.companyName}
-              start={e.start}
-              end={e.end}
-              role={e.role}
-              descriptions={e.descriptions}
-            />
-            <Divider />
-          </>
-        ))}
-      </div>
+     
       <div>
         {experiences.map((e) => (
           <>

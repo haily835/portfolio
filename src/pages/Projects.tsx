@@ -26,17 +26,6 @@ const projects = [
       "https://github.com/haily835/foodcourt",
     ],
   },
-  {
-    companyName: "DevSamurai Vietnam",
-    start: "June 2022",
-    end: "May 2023",
-    role: "Junior developer",
-    descriptions: [
-      "Agile Roadmaps, Timeline & Product Discovery plugin for Jira (Atlassian Market). Join the team to develop the Back-end (NodeJS) and Front-end (ReactJS).",
-      "Build a bot in python to automate the interaction with protocols such as Uniswap, Hash flow",
-      "Build a bot in typescript to automate the listing of NFTs on Opensea, Looksrare, X2Y2, Magic Eden.",
-    ],
-  },
 ];
 
 export default function () {

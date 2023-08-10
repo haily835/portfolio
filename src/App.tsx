@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 
 const navItems = [
   {
-    title: "About",
+    title: "About me",
     key: "about",
     content: <About />,
   },
@@ -22,7 +22,7 @@ const navItems = [
   },
   {
     title: "Projects",
-    key: "experience",
+    key: "projects",
     content: <Projects />,
   },
   // {
@@ -32,21 +32,9 @@ const navItems = [
   // },
 ];
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+  const [currentPage, setCurrentPage] = useState("about");
 
-  const renderContent = () => {
-    switch (currentPage) {
-      case "home":
-        return <Home />;
-      case "info":
-        return <Info />;
-      case "projects":
-        return <Projects />;
-      case "contact-me":
-        return <Contact />;
-    }
-    return "";
-  };
+
   return (
     <div
       className="App"
@@ -59,7 +47,7 @@ export default function App() {
       }}
     >
       <div>
-        <NavigationBar selected={currentPage} setCurrentPage={setCurrentPage} />
+        <NavigationBar navItems={navItems.map(item => ({ title: item.title, key: item.key }))} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </div>
 
       <div
@@ -70,7 +58,7 @@ export default function App() {
           marginTop: 82,
         }}
       >
-        {renderContent()}
+        {navItems.find(item => item.key === currentPage)?.content}
       </div>
 
       <Footer />

@@ -4,7 +4,11 @@ import { Typography } from "antd";
 const { Text } = Typography;
 
 interface NavigationBarProps {
-  selected: string;
+  navItems: {
+    title: string;
+    key: string;
+  }[];
+  currentPage: string;
   setCurrentPage: (currentPage: string) => void;
 }
 
@@ -14,7 +18,7 @@ const useStyles = createUseStyles({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 30,
-    backgroundColor: "#C4C1A4",
+    backgroundColor: "#C4C1A4D9",
     position: "fixed",
     width: "100vw",
   },
@@ -27,61 +31,22 @@ const useStyles = createUseStyles({
   },
 });
 
-export default function ({ selected, setCurrentPage }: NavigationBarProps) {
+export default function ({ currentPage, setCurrentPage, navItems }: NavigationBarProps) {
   const classes = useStyles();
   return (
     <div className={classes.navContainer}>
-      <div
-        className={
-          selected === "home"
-            ? `${classes.selected} ${classes.navItem}`
-            : classes.navItem
-        }
-        onClick={() => {
-          setCurrentPage("home");
-        }}
-      >
-        <Text>About</Text>
-      </div>
-
-      <div
-        className={
-          selected === "projects"
-            ? `${classes.selected} ${classes.navItem}`
-            : classes.navItem
-        }
-        onClick={() => {
-          setCurrentPage("projects");
-        }}
-      >
-        <Text>Experience</Text>
-      </div>
-
-      <div
-        className={
-          selected === "projects"
-            ? `${classes.selected} ${classes.navItem}`
-            : classes.navItem
-        }
-        onClick={() => {
-          setCurrentPage("projects");
-        }}
-      >
-        <Text>Projects</Text>
-      </div>
-
-      <div
-        className={
-          selected === "contact-me"
-            ? `${classes.selected} ${classes.navItem}`
-            : classes.navItem
-        }
-        onClick={() => {
-          setCurrentPage("contact-me");
-        }}
-      >
-        <Text>Notes</Text>
-      </div>
+      {
+        navItems.map((item) => <div
+          className={
+            currentPage === item.key
+              ? `${classes.selected} ${classes.navItem}`
+              : classes.navItem
+          }
+          onClick={() => { setCurrentPage(item.key); }}
+        >
+          <Text>{item.title}</Text>
+        </div>)
+      }
     </div>
   );
 }
