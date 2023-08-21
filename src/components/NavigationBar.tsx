@@ -1,7 +1,9 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
-import { Typography } from "antd";
-const { Text } = Typography;
+// import { Typography } from "antd";
+// const { Text } = Typography;
+
+import Typography from "@mui/material/Typography";
 
 interface NavigationBarProps {
   navItems: {
@@ -15,19 +17,28 @@ interface NavigationBarProps {
 const useStyles = createUseStyles({
   navContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-around",
-    padding: 30,
-    backgroundColor: "#C4C1A4D9",
-    position: "fixed",
-    width: "100vw",
+    
+    // backgroundColor: "#C4C1A4D9",
+    // position: "fixed",
+    // width: "100vw",
   },
   navItem: {
     cursor: "pointer",
+    color: '#9E9FA5',
+    marginTop: 10,
+    '&:hover': {
+      ontWeight: "bold",
+      textDecoration: "underline",
+      color: 'black'
+    }
   },
   selected: {
     fontWeight: "bold",
     textDecoration: "underline",
+    fontSize: '20px',
+    color: 'black'
   },
 });
 
@@ -44,7 +55,7 @@ export default function ({ currentPage, setCurrentPage, navItems }: NavigationBa
           }
           onClick={() => { setCurrentPage(item.key); }}
         >
-          <Text>{item.title}</Text>
+          <Typography variant="button">{item.title}</Typography>
         </div>)
       }
     </div>
