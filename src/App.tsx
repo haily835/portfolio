@@ -10,6 +10,7 @@ import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
 import Info from "./components/Info";
 import { Container, Grid, Stack } from "@mui/material";
+import _ from 'lodash';
 
 import { createUseStyles } from "react-jss";
 
@@ -48,8 +49,29 @@ const navItems = [
   // },
 ];
 export default function App() {
-  const [currentPage, setCurrentPage] = useState("about");
+  const [focusedSection, setFocusedSection] = useState("about");
   const classes = useStyle();
+
+  const findCurrentSection = () => {
+    // console.log('========')
+    const distances = navItems.map((item) => {
+      const sectionEle = document.getElementById(item.key);
+      const distFromTop = sectionEle?.getBoundingClientRect().top;
+      // console.log(`${item.key} ${distFromTop}`)
+      return { key: item.key, distFromTop: Math.abs(distFromTop || 0) }
+    });
+
+    const focused = _.minBy(distances, (d) => d.distFromTop)?.key;
+    // console.log("---- Focused section: ===== ", focused);
+
+
+    setFocusedSection(focused || '');
+  }
+
+  const handleScroll = () => {
+    findCurrentSection()
+  }
+
   return (
     <div
       className="App"
@@ -75,12 +97,9 @@ export default function App() {
               <div className={classes.nav}>
                 <NavigationBar
                   navItems={navItems.map(item => ({ title: item.title, key: item.key }))}
-                  currentPage={currentPage}
-                  setCurrentPage={setCurrentPage} />
+                  focusedSection={focusedSection}
+                />
               </div>
-
-
-
             </Stack>
           </Container>
 
@@ -90,7 +109,9 @@ export default function App() {
         <Grid item xs={12} sm={8} lg={8} style={{
           overflow: 'auto',
           height: '100%'
-        }}>
+        }}
+          onScroll={() => { handleScroll() }}
+        >
           <div
             style={{
               display: "flex",
@@ -100,7 +121,7 @@ export default function App() {
               flexDirection: 'column'
             }}
           >
-            {navItems.map(item => item.content)}
+            {navItems.map(item => <div id={item.key} key={item.key}>{item.content}</div>)}
           </div>
         </Grid>
       </Grid>

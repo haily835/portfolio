@@ -10,8 +10,7 @@ interface NavigationBarProps {
     title: string;
     key: string;
   }[];
-  currentPage: string;
-  setCurrentPage: (currentPage: string) => void;
+  focusedSection: string;
 }
 
 const useStyles = createUseStyles({
@@ -19,7 +18,7 @@ const useStyles = createUseStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
-    
+
     // backgroundColor: "#C4C1A4D9",
     // position: "fixed",
     // width: "100vw",
@@ -42,18 +41,21 @@ const useStyles = createUseStyles({
   },
 });
 
-export default function ({ currentPage, setCurrentPage, navItems }: NavigationBarProps) {
+export default function ({ focusedSection, navItems }: NavigationBarProps) {
   const classes = useStyles();
   return (
     <div className={classes.navContainer}>
       {
         navItems.map((item) => <div
           className={
-            currentPage === item.key
+            focusedSection === item.key
               ? `${classes.selected} ${classes.navItem}`
               : classes.navItem
           }
-          onClick={() => { setCurrentPage(item.key); }}
+          onClick={() => {
+            const section = document.getElementById(item.key);
+            section?.scrollIntoView({ behavior: "smooth", block: 'center' });
+          }}
         >
           <Typography variant="button">{item.title}</Typography>
         </div>)
