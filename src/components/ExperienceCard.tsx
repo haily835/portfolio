@@ -1,7 +1,9 @@
 import React from "react";
-import { Space, Typography } from "antd";
+// import { Space, Typography } from "antd";
 
-const { Text, Paragraph } = Typography;
+// const { Text, Paragraph } = Typography;
+import { Stack, Typography } from '@mui/material'
+
 
 interface ExperienceCardProps {
   companyName: string;
@@ -19,32 +21,32 @@ export default function ({
   descriptions,
 }: ExperienceCardProps) {
   return (
-    <Space
-      direction="vertical"
-      size="small"
+    <Stack
+
       style={{
         textAlign: "left",
         width: "100%",
       }}
     >
-      <Space
+      <Stack
         style={{
           display: "flex",
           justifyContent: "space-between",
         }}
+        direction="row"
       >
-        <Text strong>{companyName.toLocaleUpperCase()}</Text>
-        <Text italic>{`${start} - ${end}`}</Text>
-      </Space>
+        <Typography variant="h6" gutterBottom><strong>{companyName.toLocaleUpperCase()}</strong></Typography>
+        <Typography variant="subtitle2" gutterBottom>{`${start} - ${end}`}</Typography>
+      </Stack>
 
-      <Text strong>{role}</Text>
-      <Paragraph>
-        <ul>
-          {descriptions.map((desc) => (
-            <li>{desc}</li>
-          ))}
-        </ul>
-      </Paragraph>
-    </Space>
+      <Typography variant="subtitle1" gutterBottom>{role}</Typography>
+
+      <ul>
+        {descriptions.map((desc) => (
+          <li><Typography variant="body1" gutterBottom>{desc}</Typography></li>
+        ))}
+      </ul>
+
+    </Stack>
   );
 }

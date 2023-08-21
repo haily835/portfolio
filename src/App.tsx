@@ -112,17 +112,15 @@ export default function App() {
         }}
           onScroll={() => { handleScroll() }}
         >
-          <div
+          <Stack
+            spacing={10}
             style={{
-              display: "flex",
-              flex: 1,
-              justifyContent: "center",
               marginTop: 82,
               flexDirection: 'column'
             }}
           >
             {navItems.map(item => <div id={item.key} key={item.key}>{item.content}</div>)}
-          </div>
+          </Stack>
         </Grid>
       </Grid>
 

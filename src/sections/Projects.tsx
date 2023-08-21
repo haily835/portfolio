@@ -1,7 +1,7 @@
 import React from "react";
-import { Space, Divider, Typography } from "antd";
+import { Stack, Divider, Typography } from "@mui/material";
 import ExperienceCard from "../components/ExperienceCard";
-const { Title } = Typography;
+
 
 const projects = [
   {
@@ -30,8 +30,8 @@ const projects = [
 
 export default function () {
   return (
-    <Space
-      direction="vertical"
+    <Stack
+
       style={{
         margin: `30px 100px`,
         textAlign: "left",
@@ -51,6 +51,6 @@ export default function () {
           </>
         ))}
       </div>
-    </Space>
+    </Stack>
   );
 }

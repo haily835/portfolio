@@ -1,7 +1,7 @@
 import React from "react";
-import { Space, Divider, Typography } from "antd";
+import { Stack, Divider, Typography } from "@mui/material";
 import ExperienceCard from "../components/ExperienceCard";
-const { Title } = Typography;
+
 
 const experiences = [
   {
@@ -37,14 +37,14 @@ const experiences = [
 
 export default function () {
   return (
-    <Space
-      direction="vertical"
+    <Stack
+
       style={{
         margin: `30px 100px`,
         textAlign: "left",
       }}
     >
-     
+
       <div>
         {experiences.map((e) => (
           <>
@@ -59,6 +59,6 @@ export default function () {
           </>
         ))}
       </div>
-    </Space>
+    </Stack>
   );
 }
