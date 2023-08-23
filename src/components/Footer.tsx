@@ -1,36 +1,15 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
-import Connect from "./Connect";
-import { Space } from "antd";
+import { Stack, Typography } from "@mui/material";
 
-const useStyles = createUseStyles({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    backgroundColor: "#000",
-    color: "#fff",
-    padding: 30,
-    justifyContent: "space-between",
-  },
-});
+
 
 export default function () {
-  const classes = useStyles();
   return (
-    <Space className={classes.container}>
-      <div>
-        <div>Hai Ly</div>
-        <div>Windsor, Ontario, Canada</div>
-        <div>Di An, Binh Duong, Vietnam</div>
-        <div>
-          <Connect />
-        </div>
-      </div>
-      <div>
-        <div>Email: lyquochai835@gmail.com</div>
-        <div>(+84) 847377379</div>
-        <div>© Hai Ly. All rights reserved.</div>
-      </div>
-    </Space>
+    <Stack>
+      <Typography variant="caption" display="block" gutterBottom>Windsor, Ontario, Canada</Typography>
+      <Typography variant="caption" display="block" gutterBottom>lyquochai835@gmail.com</Typography>
+      <Typography variant="caption" display="block" gutterBottom>(+1) 437 219 0461</Typography>
+      <Typography variant="caption" display="block" gutterBottom>© Hai Ly. All rights reserved.</Typography>
+    </Stack>
   );
 }

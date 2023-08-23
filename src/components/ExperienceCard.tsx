@@ -1,14 +1,15 @@
 import React from "react";
-import { Space, Typography } from "antd";
+import { Stack, Typography, Chip } from '@mui/material'
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 
-const { Text, Paragraph } = Typography;
 
 interface ExperienceCardProps {
   companyName: string;
   start: string;
   end: string;
   role: string;
-  descriptions: string[];
+  description: ReactJSXElement;
+  technologies?: string[];
 }
 
 export default function ({
@@ -16,35 +17,34 @@ export default function ({
   start,
   end,
   role,
-  descriptions,
+  description,
+  technologies,
 }: ExperienceCardProps) {
   return (
-    <Space
-      direction="vertical"
-      size="small"
+    <Stack
       style={{
         textAlign: "left",
         width: "100%",
       }}
     >
-      <Space
+      <Stack
         style={{
           display: "flex",
           justifyContent: "space-between",
         }}
+        direction="row"
       >
-        <Text strong>{companyName.toLocaleUpperCase()}</Text>
-        <Text italic>{`${start} - ${end}`}</Text>
-      </Space>
+        <Typography variant="h6" gutterBottom color="primary.dark"><strong>{companyName.toLocaleUpperCase()}</strong></Typography>
+        <Typography variant="subtitle2" gutterBottom>{`${start} - ${end}`}</Typography>
+      </Stack>
 
-      <Text strong>{role}</Text>
-      <Paragraph>
-        <ul>
-          {descriptions.map((desc) => (
-            <li>{desc}</li>
-          ))}
-        </ul>
-      </Paragraph>
-    </Space>
+      <Typography variant="subtitle1" gutterBottom>{role}</Typography>
+      
+      {description}
+
+      <Stack direction="row" spacing={2}>
+        {technologies?.map((t => <Chip label={t} variant="filled" size="small" key={t} color="error"/>))}
+      </Stack>
+    </Stack>
   );
 }
