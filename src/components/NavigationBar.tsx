@@ -36,7 +36,6 @@ const useStyles = createUseStyles({
   selected: {
     fontWeight: "bold",
     textDecoration: "underline",
-    fontSize: '20px',
     color: 'black'
   },
 });
@@ -57,7 +56,7 @@ export default function ({ focusedSection, navItems }: NavigationBarProps) {
             section?.scrollIntoView({ behavior: "smooth", block: 'center' });
           }}
         >
-          <Typography variant="button">{item.title}</Typography>
+          <Typography variant="button" fontSize={focusedSection === item.key ? 20 : 16} letterSpacing={2}>{item.title}</Typography>
         </div>)
       }
     </div>

@@ -11,6 +11,31 @@ import Footer from "./components/Footer";
 import Info from "./components/Info";
 import { Container, Grid, Stack } from "@mui/material";
 import _ from 'lodash';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import '@fontsource/spectral/300.css';
+import '@fontsource/spectral/400.css';
+import '@fontsource/spectral/500.css';
+import '@fontsource/spectral/700.css';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#4682A9',
+    },
+    secondary: {
+      main: '#F0997D',
+    },
+    error: {
+      main: "#FFC6AC"
+    },
+    tonalOffset: 0.6
+  },
+  typography: {
+    fontFamily: 'spectral,Roboto'
+  }
+});
+
+
 
 import { createUseStyles } from "react-jss";
 
@@ -73,7 +98,7 @@ export default function App() {
   }
 
   return (
-    <div
+    <ThemeProvider theme={theme}><div
       className="App"
       style={{
         width: "100vw",
@@ -94,12 +119,17 @@ export default function App() {
               style={{ padding: 40 }}
             >
               <Info />
+
               <div className={classes.nav}>
                 <NavigationBar
                   navItems={navItems.map(item => ({ title: item.title, key: item.key }))}
                   focusedSection={focusedSection}
                 />
               </div>
+
+              <Connect />
+
+              <Footer />
             </Stack>
           </Container>
 
@@ -128,6 +158,7 @@ export default function App() {
 
 
       {/* <Footer /> */}
-    </div>
+    </div></ThemeProvider>
+
   );
 }
